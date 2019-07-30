@@ -6,7 +6,9 @@ Certain things are, however, slightly changed to make the code more efficient an
 
 The typical usage is as follows
 
-    //vectors vf1 and vf2 respectively represent the input data	
+    //vectors vf1 and vf2 respectively represent the input data	(they both represent one data set, with vf1 denoting
+    //x values and vf2 y values so the input is { {1,0}, {3,4}, {5,7}, {3.5,5}, {4.5,5}, {1.5,2}, {3.5,4.5} }
+    
     std::vector<float> vf1;
 
     vf1.push_back(1.0f);
