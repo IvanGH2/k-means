@@ -13,13 +13,10 @@ struct DATAPOINT{
             DATAPOINT(){}
 };
 
-//template <class T, class U>
-
 template <class X, class Y>
 class KMeansResult{
 
                 unsigned numClusters, numDataPoints;
-                //X a; Y b;
                 std::vector<DATAPOINT<X,Y> > vCentroids;
                 std::vector<DATAPOINT<X,Y> > *vData;
                 std::vector<X> *vX;
@@ -29,11 +26,15 @@ public:
 
                 KMeansResult() :  vData(0){}
                 KMeansResult(unsigned nClusters) : numClusters(nClusters), vData(0){}
+	
                 void SetNumClusters(unsigned nClusters) { numClusters = nClusters; }
+	
                 void SetNumDataPoints(unsigned nDataPoints) { numDataPoints = nDataPoints; }
+	
                 void InitCentroids(X a, Y b){
                     vCentroids.push_back(DATAPOINT<X,Y>(a,b));
                 }
+	
                 void InitCentroids(DATAPOINT<X,Y> dp){
                     vCentroids.push_back(dp);
                 }
@@ -140,22 +141,27 @@ public:
                         }
                     }//end done
                 }
+	
                 X ComputeDistance(X x, Y y, DATAPOINT<X,Y> &dP){
                     Y ty = dP.b-y;
                     X tx = dP.a-x;
                     return sqrt(ty*ty+tx*tx);
                 }
+	
                 X ComputeDistance(DATAPOINT<X,Y> &dP0, DATAPOINT<X,Y> &dP1){
                     Y ty = dP1.b-dP0.b;
                     X tx = dP1.a-dP0.a;
                     return sqrt(ty*ty+tx*tx);
                 }
+	
                 const std::vector<DATAPOINT<X,Y> > &GetCentroidValues() const { return vCentroids; }
+	
                 const std::vector<unsigned> &GetClusterData() const { return vClusterData; }
 
                template<class T, class U>
                static void PrintClusters(const KMeansResult<T,U> &kMeans);
-               template<class T, class U>
+               
+		template<class T, class U>
                friend void PrintClusters(const KMeansResult<T,U> &kMeans);
 
 };
@@ -168,7 +174,7 @@ void PrintClusters(const KMeansResult<T,U> &kMeans) {
                               // std::cout << a; << "      " << b << std::endl;
                }
 }
-//void PrintClusters(const KMeansResult<T,U> &kMeans);
+
 #endif // KMEANS_H
 
 
