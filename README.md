@@ -52,3 +52,26 @@ The typical usage is as follows
         std::cout << d->a << "  " << d->b << std::endl;
     }
 
+Or alternatively, just put everything in a single vector
+
+    std::vector<DATAPOINT<float,float> > vf;
+    vf.push_back(DATAPOINT<float,float>(1.0f,1.0f));
+    vf.push_back(DATAPOINT<float,float>(3.0f,4.0f));
+    vf.push_back(DATAPOINT<float,float>(5.0f,7.0f));
+    vf.push_back(DATAPOINT<float,float>(3.5f,5.0f));
+    vf.push_back(DATAPOINT<float,float>(4.5f,5.0f));
+    vf.push_back(DATAPOINT<float,float>(1.5f,2.0f));
+    vf.push_back(DATAPOINT<float,float>(3.5f,4.5f));
+    
+     KMeansResult<float, float> km_f(2);//2 clusters
+    km_f.SetNumDataPoints(vf1.size());
+
+    km_f.InitCentroids(DATAPOINT<float,float>(1.0f,1.0f)); //init the first centroid
+    km_f.InitCentroids(DATAPOINT<float,float>(5.0f,7.0f)); //init the second centroid
+
+    km_f.InitData(&vf);
+
+    km_f.GenerateClusters(); 
+
+
+
