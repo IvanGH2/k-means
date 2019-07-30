@@ -25,12 +25,6 @@ class KMeansResult{
 
                 std::vector<DATAPOINT<X,Y> > vCentroids;
 				
-                DATAPOINT<X,Y> *pData;
-				
-                X *pDatax;
-				
-                Y *pDatay;
-				
                 std::vector<X> *vX;
 				
                 std::vector<Y> *vY;
@@ -49,19 +43,10 @@ public:
 
                 void InitCentroids(X a, Y b){
 
-                   // vCentroids.push_back(new DATAPOINT<X,Y>(a,b));
                     vCentroids.push_back(DATAPOINT<X,Y>(a,b));
                 }
-                void InitData(DATAPOINT<X,Y> *p){
-
-                    pData = p;
-                }
-                void InitDatax(const X *px){ pDatax = px; }
-
-                void InitDatay(const Y *py){ pDatay = py; }
 
                 void InitDatax( std::vector<X> * pVx){ vX = pVx; }
-
 
                 void InitDatay( std::vector<Y> * pVy){ vY = pVy; }
 
